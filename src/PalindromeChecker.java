@@ -1,38 +1,38 @@
 /**
  * ============================================================
- * MAIN CLASS - PalindromeChecker
+ * Use Case 9: Recursive Palindrome Checker
  * ============================================================
  *
- * Use Case 1: Application Entry & Welcome Message
- *
  * Description:
- * This program represents the entry point of the
- * Palindrome Checker Management System.
+ * Uses recursion to compare characters
+ * from outer positions moving inward.
  *
- * At this stage:
- * - Execution starts from main()
- * - Displays welcome message
- * - Displays version information
+ * Base condition:
+ * - start >= end → true
  *
- * No palindrome validation logic is implemented.
- *
- * @author Developer
- * @version 1.0
+ * @version 9.0
  */
 
 public class PalindromeChecker {
 
-    /**
-     * Application Entry Point
-     * JVM starts execution from here.
-     *
-     * @param args Command line arguments
-     */
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version: 1.0");
-        System.out.println("System initialized successfully.");
+        String input = "radar";
 
+        boolean result = checkPalindrome(input, 0, input.length() - 1);
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? " + result);
+    }
+
+    private static boolean checkPalindrome(String s, int start, int end) {
+
+        if (start >= end)
+            return true;
+
+        if (s.charAt(start) != s.charAt(end))
+            return false;
+
+        return checkPalindrome(s, start + 1, end - 1);
     }
 }
