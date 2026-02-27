@@ -1,38 +1,42 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * ============================================================
- * MAIN CLASS - PalindromeChecker
+ * Use Case 7: Deque-Based Optimized Palindrome Checker
  * ============================================================
  *
- * Use Case 1: Application Entry & Welcome Message
- *
  * Description:
- * This program represents the entry point of the
- * Palindrome Checker Management System.
+ * Uses Deque (Double Ended Queue)
+ * to compare first and last characters directly.
  *
- * At this stage:
- * - Execution starts from main()
- * - Displays welcome message
- * - Displays version information
+ * Removes from front and rear until empty.
  *
- * No palindrome validation logic is implemented.
- *
- * @author Developer
- * @version 1.0
+ * @version 7.0
  */
 
 public class PalindromeChecker {
 
-    /**
-     * Application Entry Point
-     * JVM starts execution from here.
-     *
-     * @param args Command line arguments
-     */
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version: 1.0");
-        System.out.println("System initialized successfully.");
+        String input = "refer";
 
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for (char c : input.toCharArray()) {
+            deque.add(c);
+        }
+
+        boolean isPalindrome = true;
+
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? " + isPalindrome);
     }
 }
