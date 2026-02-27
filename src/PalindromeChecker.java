@@ -1,38 +1,49 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * ============================================================
- * MAIN CLASS - PalindromeChecker
+ * Use Case 6: Queue + Stack Based Palindrome Check
  * ============================================================
  *
- * Use Case 1: Application Entry & Welcome Message
- *
  * Description:
- * This program represents the entry point of the
- * Palindrome Checker Management System.
+ * Demonstrates palindrome validation using:
+ * - Queue (FIFO)
+ * - Stack (LIFO)
  *
- * At this stage:
- * - Execution starts from main()
- * - Displays welcome message
- * - Displays version information
+ * Characters are inserted into both structures.
+ * Then dequeue (Queue) and pop (Stack) values are compared.
  *
- * No palindrome validation logic is implemented.
+ * If all characters match → palindrome.
  *
- * @author Developer
- * @version 1.0
+ * @version 6.0
  */
 
 public class PalindromeChecker {
 
-    /**
-     * Application Entry Point
-     * JVM starts execution from here.
-     *
-     * @param args Command line arguments
-     */
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version: 1.0");
-        System.out.println("System initialized successfully.");
+        String input = "civic";
 
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : input.toCharArray()) {
+            queue.add(c);   // FIFO
+            stack.push(c);  // LIFO
+        }
+
+        boolean isPalindrome = true;
+
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? " + isPalindrome);
     }
 }
