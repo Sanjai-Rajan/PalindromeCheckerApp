@@ -1,23 +1,21 @@
 /**
-* ============================================================
-* MAIN CLASS - PalindromeChecker
-* ============================================================
-*
-* Use Case 2: Hardcoded Palindrome Validation
-*
-* Description:
-* This class demonstrates basic palindrome validation
-* using a hardcoded string value.
-*
-* The application:
-* - Stores a predefined string
-* - Compares characters from both ends
-* - Determines whether the string is a palindrome
-* - Displays the result on the console
-*
-* @author Developer
-* @version 2.0
-  */
+ * ============================================================
+ * MAIN CLASS - PalindromeChecker
+ * ============================================================
+ *
+ * Use Case 2: Hardcoded Palindrome Validation
+ *
+ * Description:
+ * This program validates whether a predefined string
+ * is a palindrome by comparing characters from both ends.
+ *
+ * Concepts Used:
+ * - String
+ * - Loop
+ * - if-else condition
+ *
+ * @version 2.0
+ */
 
 public class PalindromeChecker {
 
@@ -27,10 +25,12 @@ public class PalindromeChecker {
         boolean isPalindrome = true;
 
         for (int i = 0; i < input.length() / 2; i++) {
+
             if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
             }
+
         }
 
         System.out.println("Input: " + input);
