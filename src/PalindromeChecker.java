@@ -3,36 +3,37 @@
  * MAIN CLASS - PalindromeChecker
  * ============================================================
  *
- * Use Case 1: Application Entry & Welcome Message
+ * Use Case 2: Hardcoded Palindrome Validation
  *
  * Description:
- * This program represents the entry point of the
- * Palindrome Checker Management System.
+ * This program validates whether a predefined string
+ * is a palindrome by comparing characters from both ends.
  *
- * At this stage:
- * - Execution starts from main()
- * - Displays welcome message
- * - Displays version information
+ * Concepts Used:
+ * - String
+ * - Loop
+ * - if-else condition
  *
- * No palindrome validation logic is implemented.
- *
- * @author Developer
- * @version 1.0
+ * @version 2.0
  */
 
 public class PalindromeChecker {
 
-    /**
-     * Application Entry Point
-     * JVM starts execution from here.
-     *
-     * @param args Command line arguments
-     */
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version: 1.0");
-        System.out.println("System initialized successfully.");
+        String input = "madam";
+        boolean isPalindrome = true;
 
+        for (int i = 0; i < input.length() / 2; i++) {
+
+            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+
+        }
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? " + isPalindrome);
     }
 }
