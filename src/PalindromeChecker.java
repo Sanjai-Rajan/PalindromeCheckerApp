@@ -1,38 +1,43 @@
 /**
  * ============================================================
- * MAIN CLASS - PalindromeChecker
+ * Use Case 10: Case-Insensitive & Space-Ignored Palindrome
  * ============================================================
  *
- * Use Case 1: Application Entry & Welcome Message
- *
  * Description:
- * This program represents the entry point of the
- * Palindrome Checker Management System.
+ * Preprocess input by:
+ * - Removing spaces
+ * - Converting to lowercase
  *
- * At this stage:
- * - Execution starts from main()
- * - Displays welcome message
- * - Displays version information
+ * Then apply palindrome logic.
  *
- * No palindrome validation logic is implemented.
+ * Example:
+ * "A man a plan a canal Panama"
  *
- * @author Developer
- * @version 1.0
+ * @version 10.0
  */
 
 public class PalindromeChecker {
 
-    /**
-     * Application Entry Point
-     * JVM starts execution from here.
-     *
-     * @param args Command line arguments
-     */
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version: 1.0");
-        System.out.println("System initialized successfully.");
+        String input = "A man a plan a canal Panama";
 
+        // Normalize string
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+        boolean isPalindrome = true;
+
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            if (normalized.charAt(i) !=
+                    normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? " + isPalindrome);
     }
 }
