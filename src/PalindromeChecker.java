@@ -1,32 +1,40 @@
 /**
  * ============================================================
- * Use Case 3: Palindrome Check Using String Reverse
+ * Use Case 4: Character Array Based Palindrome Check
  * ============================================================
  *
  * Description:
- * This program reverses the string using a loop
- * and compares it with the original string.
+ * Converts string into char array
+ * and applies two-pointer technique.
  *
  * Concepts Used:
- * - Loop
- * - String concatenation
- * - equals() method
+ * - char[]
+ * - Two pointer approach
  *
- * @version 3.0
+ * @version 4.0
  */
 
 public class PalindromeChecker {
 
     public static void main(String[] args) {
 
-        String input = "radar";
-        String reversed = "";
+        String input = "level";
+        char[] chars = input.toCharArray();
 
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed += input.charAt(i);
+        int start = 0;
+        int end = chars.length - 1;
+        boolean isPalindrome = true;
+
+        while (start < end) {
+
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
         }
-
-        boolean isPalindrome = input.equals(reversed);
 
         System.out.println("Input: " + input);
         System.out.println("Is Palindrome? " + isPalindrome);
