@@ -2,40 +2,39 @@ import java.util.LinkedList;
 
 /**
  * ============================================================
- * Use Case 8: Linked List Based Palindrome Checker
+ * Use Case 9: Recursive Palindrome Checker
  * ============================================================
  *
  * Description:
- * Uses LinkedList to store characters.
- * Compares first and last elements using:
- * - removeFirst()
- * - removeLast()
+ * Uses recursion to compare characters
+ * from outer positions moving inward.
  *
- * @version 8.0
+ * Base condition:
+ * - start >= end → true
+ *
+ * @version 9.0
  */
 
 public class PalindromeChecker {
 
     public static void main(String[] args) {
 
-        String input = "madam";
+        String input = "radar";
 
-        LinkedList<Character> list = new LinkedList<>();
-
-        for (char c : input.toCharArray()) {
-            list.add(c);
-        }
-
-        boolean isPalindrome = true;
-
-        while (list.size() > 1) {
-            if (!list.removeFirst().equals(list.removeLast())) {
-                isPalindrome = false;
-                break;
-            }
-        }
+        boolean result = checkPalindrome(input, 0, input.length() - 1);
 
         System.out.println("Input: " + input);
-        System.out.println("Is Palindrome? " + isPalindrome);
+        System.out.println("Is Palindrome? " + result);
+    }
+
+    private static boolean checkPalindrome(String s, int start, int end) {
+
+        if (start >= end)
+            return true;
+
+        if (s.charAt(start) != s.charAt(end))
+            return false;
+
+        return checkPalindrome(s, start + 1, end - 1);
     }
 }
