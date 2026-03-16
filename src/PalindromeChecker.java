@@ -1,45 +1,40 @@
-import java.util.LinkedList;
+import java.util.Scanner;
 
-/**
- * ============================================================
- * Use Case 10: Case-Insensitive & Space-Ignored Palindrome
- * ============================================================
- *
- * Description:
- * Preprocess input by:
- * - Removing spaces
- * - Converting to lowercase
- *
- * Then apply palindrome logic.
- *
- * Example:
- * "A man a plan a canal Panama"
- *
- * @version 10.0
- */
+public class UseCase10PalindromeCheckerApp {
 
-public class PalindromeChecker {
+    public static boolean isPalindrome(String input) {
+
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        int left = 0;
+        int right = normalized.length() - 1;
+
+        while (left < right) {
+
+            if (normalized.charAt(left) != normalized.charAt(right)) {
+                return false;
+            }
+
+            left++;
+            right--;
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
 
-        String input = "A man a plan a canal Panama";
+        Scanner sc = new Scanner(System.in);
 
-        // Normalize string
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        System.out.println("Enter a string:");
+        String input = sc.nextLine();
 
-    private static boolean checkPalindrome(String s, int start, int end) {
-
-        for (int i = 0; i < normalized.length() / 2; i++) {
-
-            if (normalized.charAt(i) !=
-                    normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        if (isPalindrome(input)) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
         }
 
-
-        System.out.println("Input: " + input);
-        System.out.println("Is Palindrome? " + isPalindrome);
+        sc.close();
     }
 }
