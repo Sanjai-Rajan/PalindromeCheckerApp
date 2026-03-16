@@ -1,63 +1,68 @@
-import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
- * =========================================================
- * MAIN CLASS - UseCase4PalindromeCheckerApp
- * =========================================================
+ * =====================================================
+ * MAIN CLASS - UseCase11PalindromeCheckerApp
+ * =====================================================
  *
- * Use Case 4: Character Array Based Validation
+ * Use Case 11: Object-Oriented Palindrome Service
  *
  * Description:
- * This class validates a palindrome by converting
- * the string into a character array and comparing
- * characters using the two-pointer technique.
+ * This class demonstrates palindrome validation using
+ * object-oriented design.
  *
- * At this stage, the application:
- * - Converts string to char array
- * - Uses start and end pointers
- * - Compares characters efficiently
- * - Displays the result
- *
- * This reduces extra memory usage.
- *
- * @author Developer
- * @version 4.0
+ * The palindrome logic is encapsulated inside a
+ * PalindromeService class.
  */
 
-public class UseCase4PalindromeCheckerApp {
+public class UseCase11PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC4.
-     *
-     * @param args Command-Line arguments
+     * Application entry point for UC11
      */
     public static void main(String[] args) {
 
-        String input = "madam";
+        Scanner scanner = new Scanner(System.in);
 
-        // Convert string to char array
-        char[] chars = input.toCharArray();
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
 
-        int start = 0;
-        int end = chars.length - 1;
+        PalindromeService service = new PalindromeService();
 
-        boolean isPalindrome = true;
-
-        // Two-pointer comparison
-        while (start < end) {
-
-            if (normalized.charAt(i) !=
-                    normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        // Display result
-        if (isPalindrome) {
-            System.out.println(input + " is a Palindrome.");
+        if(service.checkPalindrome(input)) {
+            System.out.println("Palindrome");
         } else {
-            System.out.println(input + " is NOT a Palindrome.");
+            System.out.println("Not a Palindrome");
         }
+
+        scanner.close();
+    }
+}
+
+
+/**
+ * Service class that contains palindrome logic
+ */
+class PalindromeService {
+
+    /**
+     * Checks whether the input string is a palindrome
+     */
+    public boolean checkPalindrome(String input) {
+
+        int left = 0;
+        int right = input.length() - 1;
+
+        while(left < right) {
+
+            if(input.charAt(left) != input.charAt(right)) {
+                return false;
+            }
+
+            left++;
+            right--;
+        }
+
+        return true;
     }
 }
