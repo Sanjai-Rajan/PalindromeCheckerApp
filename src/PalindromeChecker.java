@@ -1,36 +1,35 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * ============================================================
- * Use Case 7: Deque-Based Optimized Palindrome Checker
+ * Use Case 8: Linked List Based Palindrome Checker
  * ============================================================
  *
  * Description:
- * Uses Deque (Double Ended Queue)
- * to compare first and last characters directly.
+ * Uses LinkedList to store characters.
+ * Compares first and last elements using:
+ * - removeFirst()
+ * - removeLast()
  *
- * Removes from front and rear until empty.
- *
- * @version 7.0
+ * @version 8.0
  */
 
 public class PalindromeChecker {
 
     public static void main(String[] args) {
 
-        String input = "refer";
+        String input = "madam";
 
-        Deque<Character> deque = new ArrayDeque<>();
+        LinkedList<Character> list = new LinkedList<>();
 
         for (char c : input.toCharArray()) {
-            deque.add(c);
+            list.add(c);
         }
 
         boolean isPalindrome = true;
 
-        while (deque.size() > 1) {
-            if (deque.removeFirst() != deque.removeLast()) {
+        while (list.size() > 1) {
+            if (!list.removeFirst().equals(list.removeLast())) {
                 isPalindrome = false;
                 break;
             }
