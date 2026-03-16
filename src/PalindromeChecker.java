@@ -1,40 +1,35 @@
-import java.util.LinkedList;
+import java.util.Scanner;
 
-/**
- * ============================================================
- * Use Case 9: Recursive Palindrome Checker
- * ============================================================
- *
- * Description:
- * Uses recursion to compare characters
- * from outer positions moving inward.
- *
- * Base condition:
- * - start >= end → true
- *
- * @version 9.0
- */
+public class RecursivePalindrome {
 
-public class PalindromeChecker {
+    public static boolean isPalindrome(String str, int start, int end) {
+
+        if (start >= end) {
+            return true;
+        }
+
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        return isPalindrome(str, start + 1, end - 1);
+    }
 
     public static void main(String[] args) {
 
-        String input = "radar";
+        Scanner sc = new Scanner(System.in);
 
-        boolean result = checkPalindrome(input, 0, input.length() - 1);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
 
-        System.out.println("Input: " + input);
-        System.out.println("Is Palindrome? " + result);
-    }
+        boolean result = isPalindrome(input, 0, input.length() - 1);
 
-    private static boolean checkPalindrome(String s, int start, int end) {
+        if (result) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
 
-        if (start >= end)
-            return true;
-
-        if (s.charAt(start) != s.charAt(end))
-            return false;
-
-        return checkPalindrome(s, start + 1, end - 1);
+        sc.close();
     }
 }
