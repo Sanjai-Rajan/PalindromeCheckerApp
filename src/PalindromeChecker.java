@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 /**
  * =========================================================
  * MAIN CLASS - UseCase4PalindromeCheckerApp
@@ -44,13 +46,11 @@ public class UseCase4PalindromeCheckerApp {
         // Two-pointer comparison
         while (start < end) {
 
-            if (chars[start] != chars[end]) {
+            if (normalized.charAt(i) !=
+                    normalized.charAt(normalized.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
             }
-
-            start++;
-            end--;
         }
 
         // Display result
