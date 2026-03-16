@@ -1,38 +1,45 @@
+import java.util.Stack;
+
 /**
  * ============================================================
- * MAIN CLASS - PalindromeChecker
+ * Use Case 5: Stack Based Palindrome Checker
  * ============================================================
  *
- * Use Case 1: Application Entry & Welcome Message
- *
  * Description:
- * This class represents the entry point of the
- * Palindrome Checker Management System.
+ * Uses Stack (LIFO principle) to reverse characters
+ * and validate palindrome.
  *
- * At this stage, the application:
- * - Starts execution from the main() method
- * - Displays a welcome message
- * - Shows application version
+ * Concepts Used:
+ * - Stack
+ * - Push
+ * - Pop
  *
- * No palindrome logic is implemented yet.
- *
- * @author Developer
- * @version 1.0
+ * @version 5.0
  */
 
 public class PalindromeChecker {
 
-    /**
-     * Application entry point.
-     * This is the first method executed by the JVM.
-     *
-     * @param args Command-line arguments
-     */
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version: 1.0");
-        System.out.println("System initialized successfully.");
+        String input = "noon";
+        Stack<Character> stack = new Stack<>();
 
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        boolean isPalindrome = true;
+
+        for (char c : input.toCharArray()) {
+
+            if (c != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+
+        }
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? " + isPalindrome);
     }
 }
