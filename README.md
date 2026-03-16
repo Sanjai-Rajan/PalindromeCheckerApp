@@ -1,16 +1,47 @@
-/*
- * Application entry
+/**
+ * =========================================================
+ * MAIN CLASS - UseCase2PalindromeCheckerApp
+ * =========================================================
  *
- * This is the first method exexuted by the JVM
- * When the Program starts
+ * Use Case 2: Hardcoded Palindrome Validation
+ *
+ * Description:
+ * This class demonstrates basic palindrome validation
+ * using a hardcoded string value.
+ *
+ * At this stage, the application:
+ * - Stores a predefined string
+ * - Compares characters from both ends
+ * - Determines whether the string is a palindrome
+ * - Displays the result on the console
  *
  * @author Developer
- * @Version 1.0
+ * @version 2.0
  */
-public class PalindromeCheckerApp {
+
+public class UseCase2PalindromeCheckerApp {
+
+    /**
+     * Application entry point for UC2.
+     *
+     * @param args Command-Line arguments
+     */
     public static void main(String[] args) {
-        System.out.println("Welcome to Palindrome Checker Management System");
-        System.out.println("Version : 1.0");
-        System.out.println("System initialized Successful");
+
+        String input = "madam";
+        boolean isPalindrome = true;
+
+        for (int i = 0; i < input.length() / 2; i++) {
+
+            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is NOT a Palindrome.");
+        }
     }
-}
