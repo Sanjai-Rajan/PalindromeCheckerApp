@@ -27,7 +27,7 @@ public class PalindromeChecker {
         // Normalize string
         String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
-        boolean isPalindrome = true;
+    private static boolean checkPalindrome(String s, int start, int end) {
 
         for (int i = 0; i < normalized.length() / 2; i++) {
 
