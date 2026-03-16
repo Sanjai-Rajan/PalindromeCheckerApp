@@ -1,63 +1,126 @@
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * =========================================================
- * MAIN CLASS - UseCase4PalindromeCheckerApp
+ * MAIN CLASS – UseCase12PalindromeCheckerApp
  * =========================================================
  *
- * Use Case 4: Character Array Based Validation
+ * Use Case 12: Strategy Pattern for Palindrome Algorithms
  *
  * Description:
- * This class validates a palindrome by converting
- * the string into a character array and comparing
- * characters using the two-pointer technique.
+ * This class demonstrates how different palindrome
+ * validation algorithms can be selected dynamically
+ * at runtime using the Strategy Design Pattern.
  *
- * At this stage, the application:
- * - Converts string to char array
- * - Uses start and end pointers
- * - Compares characters efficiently
- * - Displays the result
- *
- * This reduces extra memory usage.
- *
- * @author Developer
- * @version 4.0
+ * The goal is to allow algorithm interchangeability.
  */
 
-public class UseCase4PalindromeCheckerApp {
+public class UseCase12PalindromeCheckerApp {
 
-    /**
-     * Application entry point for UC4.
-     *
-     * @param args Command-Line arguments
-     */
     public static void main(String[] args) {
 
-        String input = "madam";
+        Scanner scanner = new Scanner(System.in);
 
-        // Convert string to char array
-        char[] chars = input.toCharArray();
+        System.out.println("Enter a string:");
+        String input = scanner.nextLine();
 
-        int start = 0;
-        int end = chars.length - 1;
+        System.out.println("Choose strategy:");
+        System.out.println("1. Stack Strategy");
+        System.out.println("2. Deque Strategy");
 
-        boolean isPalindrome = true;
+        int choice = scanner.nextInt();
 
-        // Two-pointer comparison
-        while (start < end) {
+        PalindromeStrategy strategy;
 
-            if (normalized.charAt(i) !=
-                    normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
+        if (choice == 1) {
+            strategy = new StackStrategy();
+        } else {
+            strategy = new DequeStrategy();
+        }
+
+        boolean result = strategy.checkPalindrome(input);
+
+        if (result) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+
+        scanner.close();
+    }
+}
+
+
+/**
+ * =========================================================
+ * INTERFACE – PalindromeStrategy
+ * =========================================================
+ *
+ * This interface defines a contract for all
+ * palindrome checking algorithms.
+ */
+
+interface PalindromeStrategy {
+
+    boolean checkPalindrome(String input);
+}
+
+
+/**
+ * =========================================================
+ * CLASS – StackStrategy
+ * =========================================================
+ *
+ * This implementation uses a Stack.
+ */
+
+class StackStrategy implements PalindromeStrategy {
+
+    public boolean checkPalindrome(String input) {
+
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        for (char c : input.toCharArray()) {
+
+            if (c != stack.pop()) {
+                return false;
             }
         }
 
-        // Display result
-        if (isPalindrome) {
-            System.out.println(input + " is a Palindrome.");
-        } else {
-            System.out.println(input + " is NOT a Palindrome.");
+        return true;
+    }
+}
+
+
+/**
+ * =========================================================
+ * CLASS – DequeStrategy
+ * =========================================================
+ *
+ * This implementation uses a Deque.
+ */
+
+class DequeStrategy implements PalindromeStrategy {
+
+    public boolean checkPalindrome(String input) {
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
         }
+
+        while (deque.size() > 1) {
+
+            if (deque.removeFirst() != deque.removeLast()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
