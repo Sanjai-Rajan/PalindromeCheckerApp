@@ -2,39 +2,44 @@ import java.util.LinkedList;
 
 /**
  * ============================================================
- * Use Case 9: Recursive Palindrome Checker
+ * Use Case 10: Case-Insensitive & Space-Ignored Palindrome
  * ============================================================
  *
  * Description:
- * Uses recursion to compare characters
- * from outer positions moving inward.
+ * Preprocess input by:
+ * - Removing spaces
+ * - Converting to lowercase
  *
- * Base condition:
- * - start >= end → true
+ * Then apply palindrome logic.
  *
- * @version 9.0
+ * Example:
+ * "A man a plan a canal Panama"
+ *
+ * @version 10.0
  */
 
 public class PalindromeChecker {
 
     public static void main(String[] args) {
 
-        String input = "radar";
+        String input = "A man a plan a canal Panama";
 
-        boolean result = checkPalindrome(input, 0, input.length() - 1);
-
-        System.out.println("Input: " + input);
-        System.out.println("Is Palindrome? " + result);
-    }
+        // Normalize string
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
     private static boolean checkPalindrome(String s, int start, int end) {
 
-        if (start >= end)
-            return true;
+        for (int i = 0; i < normalized.length() / 2; i++) {
 
-        if (s.charAt(start) != s.charAt(end))
-            return false;
+            if (normalized.charAt(i) !=
+                    normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
 
-        return checkPalindrome(s, start + 1, end - 1);
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? " + isPalindrome);
     }
 }
