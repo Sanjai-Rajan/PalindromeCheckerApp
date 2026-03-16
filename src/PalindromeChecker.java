@@ -1,68 +1,49 @@
 import java.util.Scanner;
 
 /**
- * =====================================================
- * MAIN CLASS - UseCase11PalindromeCheckerApp
- * =====================================================
+ * =========================================================
+ * MAIN CLASS - UseCase3PalindromeReverseApp
+ * =========================================================
  *
- * Use Case 11: Object-Oriented Palindrome Service
+ * Use Case 3: Palindrome Check Using String Reverse
  *
  * Description:
- * This class demonstrates palindrome validation using
- * object-oriented design.
+ * This class checks whether a string is a palindrome
+ * by reversing the string using a loop and comparing
+ * it with the original string.
  *
- * The palindrome logic is encapsulated inside a
- * PalindromeService class.
+ * Key Concepts:
+ * - For Loop
+ * - String Immutability
+ * - String Concatenation (+)
+ * - equals() Method
+ *
+ * @author Developer
+ * @version 3.0
  */
 
-public class UseCase11PalindromeCheckerApp {
+public class UseCase3PalindromeReverseApp {
 
     /**
-     * Application entry point for UC11
+     * Application entry point for UC3.
+     *
+     * @param args Command-Line arguments
      */
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        String original = "madam";
+        String reversed = "";
 
-        System.out.print("Enter a string: ");
-        String input = scanner.nextLine();
+        // Reverse string using loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
+        }
 
-        PalindromeService service = new PalindromeService();
-
-        if(service.checkPalindrome(input)) {
-            System.out.println("Palindrome");
+        // Compare original and reversed string
+        if (original.equals(reversed)) {
+            System.out.println(original + " is a Palindrome.");
         } else {
-            System.out.println("Not a Palindrome");
+            System.out.println(original + " is NOT a Palindrome.");
         }
-
-        scanner.close();
-    }
-}
-
-
-/**
- * Service class that contains palindrome logic
- */
-class PalindromeService {
-
-    /**
-     * Checks whether the input string is a palindrome
-     */
-    public boolean checkPalindrome(String input) {
-
-        int left = 0;
-        int right = input.length() - 1;
-
-        while(left < right) {
-
-            if(input.charAt(left) != input.charAt(right)) {
-                return false;
-            }
-
-            left++;
-            right--;
-        }
-
-        return true;
     }
 }
