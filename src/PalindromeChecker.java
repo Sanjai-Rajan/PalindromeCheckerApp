@@ -1,39 +1,42 @@
+import java.util.Stack;
+
 /**
  * ============================================================
- * Use Case 4: Character Array Based Palindrome Check
+ * Use Case 5: Stack Based Palindrome Checker
  * ============================================================
  *
  * Description:
- * Converts string into char array
- * and applies two-pointer technique.
+ * Uses Stack (LIFO principle) to reverse characters
+ * and validate palindrome.
  *
  * Concepts Used:
- * - char[]
- * - Two pointer approach
+ * - Stack
+ * - Push
+ * - Pop
  *
- * @version 4.0
+ * @version 5.0
  */
 
 public class PalindromeChecker {
 
     public static void main(String[] args) {
 
-        String input = "level";
-        char[] chars = input.toCharArray();
+        String input = "noon";
+        Stack<Character> stack = new Stack<>();
 
-        int start = 0;
-        int end = chars.length - 1;
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
         boolean isPalindrome = true;
 
-        while (start < end) {
+        for (char c : input.toCharArray()) {
 
-            if (chars[start] != chars[end]) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
 
-            start++;
-            end--;
         }
 
         System.out.println("Input: " + input);
