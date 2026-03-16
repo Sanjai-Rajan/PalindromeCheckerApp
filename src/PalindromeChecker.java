@@ -2,99 +2,59 @@ import java.util.*;
 
 /**
  * =========================================================
- * MAIN CLASS – UseCase13PalindromeCheckerApp
+ * MAIN CLASS - UseCase5StackPalindromeCheckerApp
  * =========================================================
  *
- * Use Case 13: Performance Comparison
+ * Use Case 5: Stack-Based Palindrome Checker
  *
  * Description:
- * This class measures and compares the execution
- * performance of palindrome validation algorithms.
+ * This class validates a palindrome by pushing
+ * characters into a stack and popping them to
+ * compare with the original string.
  *
- * The application:
- * - Uses different palindrome algorithms
- * - Captures execution start and end time
- * - Calculates execution duration
- * - Displays benchmarking results
+ * At this stage, the application:
+ * - Pushes characters into stack
+ * - Pops characters in reverse order
+ * - Compares with original string
+ * - Displays the result
  *
- * The goal is to introduce benchmarking concepts.
+ * @author Developer
+ * @version 5.0
  */
 
-public class UseCase13PalindromeCheckerApp {
+public class UseCase5StackPalindromeCheckerApp {
 
+    /**
+     * Application entry point for UC5.
+     *
+     * @param args Command-Line arguments
+     */
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter a string:");
-        String input = scanner.nextLine();
-
-        // Algorithm 1 – Two Pointer Method
-        long start1 = System.nanoTime();
-
-        boolean result1 = twoPointerPalindrome(input);
-
-        long end1 = System.nanoTime();
-        long time1 = end1 - start1;
-
-
-        // Algorithm 2 – Stack Method
-        long start2 = System.nanoTime();
-
-        boolean result2 = stackPalindrome(input);
-
-        long end2 = System.nanoTime();
-        long time2 = end2 - start2;
-
-
-        System.out.println("\nRESULTS");
-
-        System.out.println("Two Pointer Result: " + result1);
-        System.out.println("Two Pointer Time: " + time1 + " ns");
-
-        System.out.println("\nStack Result: " + result2);
-        System.out.println("Stack Time: " + time2 + " ns");
-
-        scanner.close();
-    }
-
-
-    // Algorithm 1
-    public static boolean twoPointerPalindrome(String str) {
-
-        int left = 0;
-        int right = str.length() - 1;
-
-        while(left < right) {
-
-            if(str.charAt(left) != str.charAt(right)) {
-                return false;
-            }
-
-            left++;
-            right--;
-        }
-
-        return true;
-    }
-
-
-    // Algorithm 2
-    public static boolean stackPalindrome(String str) {
+        String input = "madam";
 
         Stack<Character> stack = new Stack<>();
 
-        for(char c : str.toCharArray()) {
-            stack.push(c);
+        // Push characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
         }
 
-        for(char c : str.toCharArray()) {
+        boolean isPalindrome = true;
 
-            if(c != stack.pop()) {
-                return false;
+        // Pop and compare
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
+                isPalindrome = false;
+                break;
             }
         }
 
-        return true;
+        // Print result
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is NOT a Palindrome.");
+        }
     }
 }
