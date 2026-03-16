@@ -1,45 +1,60 @@
 import java.util.Stack;
 
 /**
- * ============================================================
- * Use Case 5: Stack Based Palindrome Checker
- * ============================================================
+ * =========================================================
+ * MAIN CLASS - UseCase5StackPalindromeCheckerApp
+ * =========================================================
+ *
+ * Use Case 5: Stack-Based Palindrome Checker
  *
  * Description:
- * Uses Stack (LIFO principle) to reverse characters
- * and validate palindrome.
+ * This class validates a palindrome by pushing
+ * characters into a stack and popping them to
+ * compare with the original string.
  *
- * Concepts Used:
- * - Stack
- * - Push
- * - Pop
+ * At this stage, the application:
+ * - Pushes characters into stack
+ * - Pops characters in reverse order
+ * - Compares with original string
+ * - Displays the result
  *
+ * @author Developer
  * @version 5.0
  */
 
-public class PalindromeChecker {
+public class UseCase5StackPalindromeCheckerApp {
 
+    /**
+     * Application entry point for UC5.
+     *
+     * @param args Command-Line arguments
+     */
     public static void main(String[] args) {
 
-        String input = "noon";
+        String input = "madam";
+
         Stack<Character> stack = new Stack<>();
 
-        for (char c : input.toCharArray()) {
-            stack.push(c);
+        // Push characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        for (char c : input.toCharArray()) {
-
-            if (c != stack.pop()) {
+        // Pop and compare
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-
         }
 
-        System.out.println("Input: " + input);
-        System.out.println("Is Palindrome? " + isPalindrome);
+        // Print result
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is NOT a Palindrome.");
+        }
     }
 }
