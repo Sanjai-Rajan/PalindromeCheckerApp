@@ -1,42 +1,46 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
  * ============================================================
- * Use Case 5: Stack Based Palindrome Checker
+ * Use Case 6: Queue + Stack Based Palindrome Check
  * ============================================================
  *
  * Description:
- * Uses Stack (LIFO principle) to reverse characters
- * and validate palindrome.
+ * Demonstrates palindrome validation using:
+ * - Queue (FIFO)
+ * - Stack (LIFO)
  *
- * Concepts Used:
- * - Stack
- * - Push
- * - Pop
+ * Characters are inserted into both structures.
+ * Then dequeue (Queue) and pop (Stack) values are compared.
  *
- * @version 5.0
+ * If all characters match → palindrome.
+ *
+ * @version 6.0
  */
 
 public class PalindromeChecker {
 
     public static void main(String[] args) {
 
-        String input = "noon";
+        String input = "civic";
+
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
         for (char c : input.toCharArray()) {
-            stack.push(c);
+            queue.add(c);   // FIFO
+            stack.push(c);  // LIFO
         }
 
         boolean isPalindrome = true;
 
-        for (char c : input.toCharArray()) {
-
-            if (c != stack.pop()) {
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-
         }
 
         System.out.println("Input: " + input);
