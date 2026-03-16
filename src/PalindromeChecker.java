@@ -1,72 +1,45 @@
+import java.util.LinkedList;
+
 /**
  * ============================================================
- * MAIN CLASS - PalindromeChecker
+ * Use Case 10: Case-Insensitive & Space-Ignored Palindrome
  * ============================================================
  *
-<<<<<<< HEAD
- * Use Case 2: Hardcoded Palindrome Validation
- *
  * Description:
- * This program validates whether a predefined string
- * is a palindrome by comparing characters from both ends.
+ * Preprocess input by:
+ * - Removing spaces
+ * - Converting to lowercase
  *
- * Concepts Used:
- * - String
- * - Loop
- * - if-else condition
+ * Then apply palindrome logic.
  *
- * @version 2.0
-=======
- * Use Case 1: Application Entry & Welcome Message
+ * Example:
+ * "A man a plan a canal Panama"
  *
- * Description:
- * This class represents the entry point of the
- * Palindrome Checker Management System.
- *
- * At this stage, the application:
- * - Starts execution from the main() method
- * - Displays a welcome message
- * - Shows application version
- *
- * No palindrome logic is implemented yet.
- *
- * @author Developer
- * @version 1.0
->>>>>>> de34ebd62aafa1ab78e780af15b6cc5db04e9011
+ * @version 10.0
  */
 
 public class PalindromeChecker {
 
-<<<<<<< HEAD
     public static void main(String[] args) {
 
-        String input = "madam";
-        boolean isPalindrome = true;
+        String input = "A man a plan a canal Panama";
 
-        for (int i = 0; i < input.length() / 2; i++) {
+        // Normalize string
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+    private static boolean checkPalindrome(String s, int start, int end) {
+
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            if (normalized.charAt(i) !=
+                    normalized.charAt(normalized.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
             }
-
         }
+
 
         System.out.println("Input: " + input);
         System.out.println("Is Palindrome? " + isPalindrome);
-=======
-    /**
-     * Application entry point.
-     * This is the first method executed by the JVM.
-     *
-     * @param args Command-line arguments
-     */
-    public static void main(String[] args) {
-
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version: 1.0");
-        System.out.println("System initialized successfully.");
-
->>>>>>> de34ebd62aafa1ab78e780af15b6cc5db04e9011
     }
 }
