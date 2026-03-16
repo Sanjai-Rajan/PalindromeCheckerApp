@@ -1,35 +1,50 @@
 import java.util.LinkedList;
 
 /**
- * ============================================================
- * Use Case 10: Case-Insensitive & Space-Ignored Palindrome
- * ============================================================
+ * =========================================================
+ * MAIN CLASS - UseCase4PalindromeCheckerApp
+ * =========================================================
+ *
+ * Use Case 4: Character Array Based Validation
  *
  * Description:
- * Preprocess input by:
- * - Removing spaces
- * - Converting to lowercase
+ * This class validates a palindrome by converting
+ * the string into a character array and comparing
+ * characters using the two-pointer technique.
  *
- * Then apply palindrome logic.
+ * At this stage, the application:
+ * - Converts string to char array
+ * - Uses start and end pointers
+ * - Compares characters efficiently
+ * - Displays the result
  *
- * Example:
- * "A man a plan a canal Panama"
+ * This reduces extra memory usage.
  *
- * @version 10.0
+ * @author Developer
+ * @version 4.0
  */
 
-public class PalindromeChecker {
+public class UseCase4PalindromeCheckerApp {
 
+    /**
+     * Application entry point for UC4.
+     *
+     * @param args Command-Line arguments
+     */
     public static void main(String[] args) {
 
-        String input = "A man a plan a canal Panama";
+        String input = "madam";
 
-        // Normalize string
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        // Convert string to char array
+        char[] chars = input.toCharArray();
 
-    private static boolean checkPalindrome(String s, int start, int end) {
+        int start = 0;
+        int end = chars.length - 1;
 
-        for (int i = 0; i < normalized.length() / 2; i++) {
+        boolean isPalindrome = true;
+
+        // Two-pointer comparison
+        while (start < end) {
 
             if (normalized.charAt(i) !=
                     normalized.charAt(normalized.length() - 1 - i)) {
@@ -38,8 +53,11 @@ public class PalindromeChecker {
             }
         }
 
-
-        System.out.println("Input: " + input);
-        System.out.println("Is Palindrome? " + isPalindrome);
+        // Display result
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is NOT a Palindrome.");
+        }
     }
 }
